@@ -1,11 +1,16 @@
-# solution&code for the CPSC 2019, rank 4/5 on the HR/QRS track, respectively.
+# Solution&Code for the CPSC 2019, rank 4/5 on the HR/QRS track, respectively.
+
+## Solution
+
+The QRS complex is the most prominent feature and it can be used to obtain additional useful clinical information from electrocardiogram (ECG) signals, therefore, QRS complex detection is critical for ECG signal analysis. Accurate QRS location keeps a challenging task. in noisy ECG signals. The rule-based QRS detection methods largely depend on hand-crafted manual features and parameters, the fixed features and parameters of which require difficult offline tuning for adapting to new scenarios.
+In this study, based on 1-D convolutional neural network (CNN) and U-Net-like architecture, an accurate QRS complex detection method is proposed. Inspired by previous work, the residual block is introduced as backbone of encoder in 1-D U-Net-like model. In addition, multi-level deep supervision is designed to ease the potential gradient vanishing problem and to improve the performance when only restricted set of labeled data are available.
+The proposed method has been validated against the 2nd china physiological signal challenge data set, obtaining a QRS accuracy score of 0.9004, HR accuracy score of 0.9421 on the hidden test set, respectively. Experimental results show that the proposed method acquires competitive accuracy and comparable generalization performance.
 
 ## Contents
+This code uses two main scripts to train the model and test the data:
 
-This code uses two main scripts to train the model and classify the data:
-
-* `train_model.py` Train your model. Add your model code to the `train_12ECG_model` function. It also performs all file input and output. **Do not** edit this script or we will be unable to evaluate your submission.
-* `driver.py` is the classifier which calls the output from your `train_model` script. It also performs all file input and output. **Do not** edit this script or we will be unable to evaluate your submission.
+* `train_cv.py` is used to train model . 
+* `cpsc2019_score.py` is used to test model . 
 
 Check the code in these files for the input and output formats for the `train_model` and `driver` scripts.
 
@@ -13,14 +18,13 @@ To create and save your model, you should edit `train_12ECG_classifier.py` scrip
 
 To run your classifier, you should edit the `run_12ECG_classifier.py` script, which takes a single recording as input and outputs the predicted classes and probabilities. Please, keep the formats of both outputs as they are shown in the example. You should not change the inputs and outputs of the `run_12ECG_classifier` function.
 
-## Train
+## Use
 
-You can run this classifier code by installing the requirements and running
+You can run this code by installing the requirements and running
 
-    python train_model.py training_data model   
-    python driver.py model test_data test_outputs
+    python train_cv.py 
 
-where `training_data` is a directory of training data files, `model` is a directory of files for the model, `test_data` is the directory of test data files, and `test_outputs` is a directory of classifier outputs.  The [PhysioNet/CinC 2020 webpage](https://physionetchallenges.github.io/2020/) provides a training database with data files and a description of the contents and structure of these files.
+The [CPSC 2019 webpage](http://2019.icbeb.org/Challenge.html) provides a training database with data files and a description of the contents and structure of these files.
 
 ## Submission
 
@@ -28,16 +32,6 @@ The `driver.py`, `get_12ECG_score.py`, and `get_12ECG_features.py` scripts must 
 
 ## Details
 
-See the [PhysioNet/CinC 2020 webpage](https://physionetchallenges.github.io/2020/) for more details, including instructions for the other files in this repository.
+See the [CPSC 2019 webpage](http://2019.icbeb.org/Challenge.html) for more details, including instructions for the challenge data and challenge score.
 
-## Transfer learning using pre-trained
-
-The [dataset](https://tianchi.aliyun.com/competition/entrance/231754/information) for pre-trained included 40,000 medical ecg samples provided by the Engineering Research Center of the Ministry of Education for mobile Health Management System of Hangzhou Normal University, China. Each sample has 8 leads, namely I, II, V1, V2, V3, V4, V5, and V6. You can also calculate the data of the remaining 4 leads by using the following formula:
-
-III=II-I
-aVR=-(I+II)/2
-aVL=I-II/2
-aVF=II-I/2
-
-Each sample was sampled at a frequency of 500 HZ, a length of 10 seconds, and a unit voltage of 4.88 microvolts.
 

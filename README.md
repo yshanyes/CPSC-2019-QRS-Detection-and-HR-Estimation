@@ -1,4 +1,4 @@
-# Example classifier code for Python for the CPSC 2019
+# solution&code for the CPSC 2019, rank 4/5 on the HR/QRS track, respectively.
 
 ## Contents
 
@@ -13,7 +13,7 @@ To create and save your model, you should edit `train_12ECG_classifier.py` scrip
 
 To run your classifier, you should edit the `run_12ECG_classifier.py` script, which takes a single recording as input and outputs the predicted classes and probabilities. Please, keep the formats of both outputs as they are shown in the example. You should not change the inputs and outputs of the `run_12ECG_classifier` function.
 
-## Use
+## Train
 
 You can run this classifier code by installing the requirements and running
 

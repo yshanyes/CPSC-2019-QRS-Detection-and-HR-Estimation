@@ -9,26 +9,28 @@ The proposed method has been validated against the 2nd china physiological signa
 ## Contents
 This code uses two main scripts to train the model and test the data:
 
-* `train_cv.py` is used to train model . 
-* `cpsc2019_score.py` is used to test model . 
+* `train_cv.py` is used to train model with five folds cross validation. 
+* `cpsc2019_score.py` is used to test model through feeding test data into data folder. 
 
-Check the code in these files for the input and output formats for the `train_model` and `driver` scripts.
-
-To create and save your model, you should edit `train_12ECG_classifier.py` script. Note that you should not change the input arguments of the `train_12ECG_classifier` function or add output arguments. The needed models and parameters should be saved in a separated file. In the sample code, an additional script, `get_12ECG_features.py`, is used to extract hand-crafted features. 
-
-To run your classifier, you should edit the `run_12ECG_classifier.py` script, which takes a single recording as input and outputs the predicted classes and probabilities. Please, keep the formats of both outputs as they are shown in the example. You should not change the inputs and outputs of the `run_12ECG_classifier` function.
+This is only part of the code, and the entire solution code will be coming soon.
 
 ## Use
 
 You can run this code by installing the requirements and running
 
+- training
+
     python train_cv.py 
+
+- prediction
+
+    python cpsc2019_score.py 
 
 The [CPSC 2019 webpage](http://2019.icbeb.org/Challenge.html) provides a training database with data files and a description of the contents and structure of these files.
 
 ## Submission
 
-The `driver.py`, `get_12ECG_score.py`, and `get_12ECG_features.py` scripts must be in the root path of your repository. If they are inside a folder, then the submission will be unsuccessful.
+The CPSC 2019 webpage provides the sample python entry.
 
 ## Details
 
